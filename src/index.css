@@ -1,3 +1,237 @@
 @tailwind  base;
 @tailwind  components;
 @tailwind  utilities;
+/* Base styles */
+.navbar {
+    transition: all 0.3s ease;
+  }
+  
+  /* Hide mobile menu by default */
+  .mobile-menu {
+    display: none;
+  }
+  
+  /* Show mobile menu when isMenuOpen is true */
+  .mobile-menu-open {
+    display: flex;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .navbar {
+      width: 100%;
+      padding: 10px;
+    }
+    .elements ul{
+      margin-left: auto;
+    }
+    
+  
+    .logo {
+      width: 50%;
+    }
+  
+    .elements {
+      display: none; /* Hide desktop menu on mobile */
+    }
+  
+    .mobile-menu-icon {
+      display: block; /* Show hamburger menu icon */
+      cursor: pointer;
+    }
+  
+    .mobile-menu {
+      display: block; /* Show mobile menu when open */
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .mobile-menu-icon {
+      display: none; /* Hide hamburger menu icon on desktop */
+    }
+  }
+  /* Base styles */
+.about-me-container {
+    padding: 20px;
+  }
+  
+  .home {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .image {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .intro {
+    padding: 0 20px;
+  }
+  
+  .slider {
+    margin: 10px 0;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .home {
+      width: 100%; /* Full width on smaller screens */
+      grid-template-columns: 1fr; /* Single column layout */
+      gap: 20px; /* Reduce gap between sections */
+    }
+  
+    .intro {
+      padding: 0; /* Remove padding on smaller screens */
+    }
+  
+    .image {
+      height: 200px; /* Adjust image height for smaller screens */
+    }
+  
+    h1 {
+      font-size: 2rem; /* Smaller font size for headings */
+    }
+  
+    .description {
+      font-size: 0.875rem; /* Smaller font size for description */
+    }
+  
+    .slider {
+      width: 100%; /* Full width sliders on smaller screens */
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .home {
+      grid-template-columns: 1fr 1fr; /* Two-column layout for larger screens */
+    }
+  }
+  /* Base styles */
+.services-container {
+    padding: 20px;
+  }
+  
+  .services {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .services {
+      grid-template-columns: 1fr; /* Single column layout on small screens */
+    }
+  
+    h1 {
+      font-size: 2rem; /* Smaller font size for headings */
+    }
+  
+    p {
+      font-size: 0.875rem; /* Smaller font size for description */
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .services {
+      grid-template-columns: 1fr 1fr; /* Two-column layout on medium screens */
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .services {
+      grid-template-columns: 1fr 1fr 1fr; /* Three-column layout on larger screens */
+    }
+  }
+  /* Base styles */
+.contact-container {
+    padding: 20px;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem; /* Smaller font size for headings */
+    }
+  
+    p {
+      font-size: 0.875rem; /* Smaller font size for description */
+    }
+  
+    .TextField {
+      width: 100%; /* Full width on smaller screens */
+    }
+  
+    .Button {
+      width: 100%; /* Full width button on smaller screens */
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .TextField {
+      width: 60%; /* Fixed width on larger screens */
+    }
+  
+    .Button {
+      width: 200px; /* Fixed width button on larger screens */
+    }
+  }
+  /* Base styles */
+.home-container {
+    padding: 20px;
+  }
+  
+  .intro {
+    padding: 0 20px;
+  }
+  
+  .image {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .home-container {
+      width: 100%; /* Full width on smaller screens */
+    }
+  
+    .intro {
+      order: 2; /* Intro section comes after the image on mobile */
+    }
+  
+    .image {
+      order: 1; /* Image section comes before the intro on mobile */
+      height: 200px; /* Adjust image height for smaller screens */
+    }
+  
+    h1 {
+      font-size: 2rem; /* Smaller font size for headings */
+    }
+  
+    .skill {
+      font-size: 3rem; /* Smaller font size for skill text */
+    }
+  
+    .description {
+      font-size: 0.875rem; /* Smaller font size for description */
+    }
+  
+    .Button {
+      width: 100%; /* Full width button on smaller screens */
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .home-container {
+      width: 82%; /* Fixed width on larger screens */
+    }
+  
+    .intro {
+      order: 2; /* Intro section comes before the image on desktop */
+    }
+  
+    .image {
+      order: 1; /* Image section comes after the intro on desktop */
+    }
+  }

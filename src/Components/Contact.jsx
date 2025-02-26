@@ -1,118 +1,170 @@
-import React from 'react'
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import React, { useRef } from "react";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Send the email using EmailJS
+    emailjs
+      .sendForm(
+        //service_dma1thj
+        //template_7onwbem
+        //5Kmj49fnHo7msWyJj
+        "service_dma1thj", // Replace with your EmailJS service ID
+        "template_7onwbem", // Replace with your EmailJS template ID
+        form.current,
+        "5Kmj49fnHo7msWyJj" // Replace with your EmailJS user ID
+      )
+      .then(
+        (result) => {
+          console.log("Email sent successfully!", result.text);
+          alert("Message sent successfully!"); // Notify the user
+          form.current.reset(); // Reset the form
+        },
+        (error) => {
+          console.error("Failed to send email:", error.text);
+          alert("Failed to send message. Please try again."); // Notify the user
+        }
+      );
+  };
+
   return (
-   
-<div id='contact'>
-<div  className="space w-[100%] h-[5vh]"></div>
-<div  className='w-[85%] mx-auto flex flex-col gap-y-5 mt-10'>
-<h1 className='font-semibold text-5xl flex justify-center'>Lets Connect</h1>
-<p className='flex  w-[50%] mx-auto my-5  text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam hic consequuntur delectus expedita aliquam ex, deleniti illum debitis mollitia fugit.</p>
+    <div id="contact" className="contact-container">
+      <div className="space w-[100%] h-[5vh]"></div>
 
-<div className="services grid grid-cols-1 gap-x-5">
-    {/* <div className="image"></div> */}
-<form className='flex flex-col gap-3 w-[70%] mx-auto items-center'  action="">
-<TextField
-  className="w-[60%]"
-  id="outlined-basic"
-  label="name"
-  variant="outlined"
-  sx={{
-      "& .MuiOutlinedInput-root": {
-          
-      "&.Mui-focused fieldset": {
-        borderColor: "rgb(253, 111, 1)", // Outline color when focused
-    },
-    },
-    
-    "& .MuiInputLabel-root.Mui-focused": {
-      color: "rgb(253, 111, 1)", // Label color when focused
-    },
-  }}
-/>
+      <div className="w-[90%] md:w-[85%] mx-auto flex flex-col gap-y-5 mt-10">
+        {/* Heading */}
+        <h1 className="font-semibold text-3xl md:text-5xl text-center">
+          Let's Connect
+        </h1>
 
+        {/* Description */}
+        <p className="w-[90%] md:w-[50%] mx-auto my-5 text-center text-sm md:text-base">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam hic
+          consequuntur delectus expedita aliquam ex, deleniti illum debitis
+          mollitia fugit.
+        </p>
 
-<TextField
-  className="w-[60%] "
-  //   style={{ height: "70px" }}
-  //   inputProps={{ style: { height: "60px", padding: '0px 14px' } }} // Adjust padding as needed
-  id="outlined-basic"
-  label="email"
-  variant="outlined"
-  sx={{
-    "& .MuiOutlinedInput-root": {
-        
-        "&.Mui-focused fieldset": {
-            borderColor: "rgb(253, 111, 1)", // Outline color when focused
-      },
-    },
-    
-    "& .MuiInputLabel-root.Mui-focused": {
-      color: "rgb(253, 111, 1)", // Label color when focused
-    },
-}}
-/>
-<TextField
-  className="w-[60%] "
-  //   style={{ height: "70px" }}
-  //   inputProps={{ style: { height: "60px", padding: '0px 14px' } }} // Adjust padding as needed
-  id="outlined-basic"
-  label="phone"
-  variant="outlined"
-  sx={{
-    "& .MuiOutlinedInput-root": {
-        
-        "&.Mui-focused fieldset": {
-        borderColor: "rgb(253, 111, 1)", // Outline color when focused
-      },
-    },
-    
-    "& .MuiInputLabel-root.Mui-focused": {
-      color: "rgb(253, 111, 1)", // Label color when focused
-    },
-  }}
-/>
-<TextField
-  className="w-[60%] "
-//   style={{ height: "70px" }}
-//   inputProps={{ style: { height: "60px", padding: '0px 14px' } }} // Adjust padding as needed
-  id="outlined-basic"
-  label="message"
-  variant="outlined"
-  multiline
-  rows={2}
-  sx={{
-      "& .MuiOutlinedInput-root": {
-          
-          "&.Mui-focused fieldset": {
-              borderColor: "rgb(253, 111, 1)", // Outline color when focused
-            },
-        },
-        
-        "& .MuiInputLabel-root.Mui-focused": {
-            color: "rgb(253, 111, 1)", // Label color when focused
-        },
-    }}
-/>
+        {/* Form */}
+        <form
+          ref={form}
+          className="flex flex-col gap-3 w-[100%] md:w-[70%] mx-auto items-center"
+          onSubmit={sendEmail}
+        >
+          {/* Name Field */}
+          <TextField
+            className="w-[90%] md:w-[60%]"
+            id="outlined-basic"
+            label="Name"
+            variant="outlined"
+            name="name" // Add name attribute for EmailJS
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldset": {
+                  borderColor: "rgb(253, 111, 1)", // Outline color when focused
+                },
+              },
+              "& .MuiInputLabel-root.Mui-focused": {
+                color: "rgb(253, 111, 1)", // Label color when focused
+              },
+            }}
+          />
 
-<Button  variant="text" style={{color:'white',backgroundColor:"rgb(253, 111, 1)",fontWeight:"lighter",width:"200px", borderRadius:"100px" }}>Submit</Button>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-    
-</form>
+          {/* Email Field */}
+          <TextField
+            className="w-[90%] md:w-[60%]"
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+            name="email" // Add name attribute for EmailJS
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldset": {
+                  borderColor: "rgb(253, 111, 1)", // Outline color when focused
+                },
+              },
+              "& .MuiInputLabel-root.Mui-focused": {
+                color: "rgb(253, 111, 1)", // Label color when focused
+              },
+            }}
+          />
 
-</div>
+          {/* Phone Field */}
+          <TextField
+            className="w-[90%] md:w-[60%]"
+            id="outlined-basic"
+            label="Phone"
+            variant="outlined"
+            name="phone" // Add name attribute for EmailJS
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldset": {
+                  borderColor: "rgb(253, 111, 1)", // Outline color when focused
+                },
+              },
+              "& .MuiInputLabel-root.Mui-focused": {
+                color: "rgb(253, 111, 1)", // Label color when focused
+              },
+            }}
+          />
 
-</div>
+          {/* Message Field */}
+          <TextField
+            className="w-[90%] md:w-[60%]"
+            id="outlined-basic"
+            label="Message"
+            variant="outlined"
+            name="message" // Add name attribute for EmailJS
+            multiline
+            rows={4}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldset": {
+                  borderColor: "rgb(253, 111, 1)", // Outline color when focused
+                },
+              },
+              "& .MuiInputLabel-root.Mui-focused": {
+                color: "rgb(253, 111, 1)", // Label color when focused
+              },
+            }}
+          />
+
+          {/* Submit Button */}
+          <Button
+            type="submit" // Add type="submit" to trigger the form submission
+            variant="text"
+            style={{
+              color: "white",
+              backgroundColor: "rgb(253, 111, 1)",
+              fontWeight: "lighter",
+              width: "200px",
+              borderRadius: "100px",
+              marginTop: "20px",
+            }}
+          >
+            Submit
+          </Button>
+
+          {/* Spacing */}
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </form>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
+//service_dma1thj
+//template_7onwbem
+//5Kmj49fnHo7msWyJj
