@@ -26,7 +26,7 @@ const Navbar = () => {
     <div className='navbar bg-white z-1 flex mx-auto justify-between w-[84%] py-3 sticky top-0 mb-10 z-50'>
       {/* Logo Section */}
       <div className="logo w-[20%] flex items-center text-4xl">
-        <img className='p-4 w-[5.5rem]' src="Subtract.png" alt="logo" />
+{/*         <img className='p-4 w-[5.5rem]' src="Subtract.png" alt="logo" /> */}
         <span>
           <span className='font-semibold'>A</span>
           <span className='opacity-80'>had</span>
